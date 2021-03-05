@@ -46,20 +46,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //las images 2 y 3 no son requeridas
-        if ($request->file('img2') == null) {
-            $image2 = "";
-        }else{
 
-            $image2 = $request->file('img2')->storeAs('public/img',  $request->name.'2'.".jpg");
-        }
-        if ($request->file('img3') == null) {
-            $image3 = "";
-        }else{
-
-            $image3 = $request->file('img3')->storeAs('public/img', $request->name.'3'.".jpg");
-        }
-        #-----------------------------------------------------------------------------
         $request->validate([
             'name'          => 'required',
             'description'   => 'required',

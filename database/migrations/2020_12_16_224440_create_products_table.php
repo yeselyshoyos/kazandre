@@ -21,9 +21,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('id_category')->constrained('categories');
             $table->bigInteger('stock');
             $table->date('deliver_delay')->nullable();
-            $table->string('img1');
-            $table->string('img2')->nullable();
-            $table->string('img3')->nullable();
+            $table->string('img');
             $table->timestamps();
         });
     }

@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col">
                             <label for="">Cantidad</label>
                             <input type="number" class="form-control" name="stock" required>
                             @error('stock')
@@ -68,67 +68,25 @@
                             </span>
                             @enderror
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="">Imagen #1</label>
-                                <input type="file" class="form-control" accept="image/*" name="img1" required>
-                            </div>
-                            @error('img1')
-                            <span class="text-danger" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-
-                        </div>
-                        <div class="col">
-                            <br>
-                            <div class="alert alert-danger" role="alert">
-                                Solo formato <strong>JPG, JPEG, PNG</strong>. La imagen debe pesar como maximo <strong>2MB</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="">Imagen #2</label>
-                            <input type="file" class="form-control" accept="image/*" name="img2">
-                            @error('img2')
-                            <span class="text-danger" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="col">
-                            <br>
-                            <div class="alert alert-danger" role="alert">
-                                Solo formato <strong>JPG, JPEG, PNG</strong>. La imagen debe pesar como maximo <strong>2MB</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <label for="">Imagen #3</label>
-                            <input type="file" class="form-control" accept="image/*" name="img3">
-                            @error('img3')
-                            <span class="text-danger" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="col">
-                            <br>
-                            <div class="alert alert-danger" role="alert">
-                                Solo formato <strong>JPG, JPEG, PNG</strong>. La imagen debe pesar como maximo <strong>2MB</strong>
+                        <div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="">Imagen</label>
+                                    <input type="file" class="form-control" accept="image/*" name="img" required>
+                                </div>
+                                @error('img')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <span class="text-danger">Solo formato <strong>JPG, JPEG, PNG</strong>. La imagen debe pesar como maximo <strong>2MB</strong></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Crear</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
             </form>
         </div>
     </div>
