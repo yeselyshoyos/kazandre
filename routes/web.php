@@ -5,8 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\InicioController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,22 +24,22 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', [InicioController::class, 'index']);
+//Route::get('/', [InicioController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
 
-Route::get('/order',[OrderController::class, 'index'])->name('orders.index');
-Route::resource('/categories', CategoryController::class)->names('categories')->parameters(['categories' => 'request']);
-Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-Route::resource('/products', ProductController::class)->names('products')->parameters(['products' => 'request']);
-Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-Route::resource('/users', UserController::class)->names('users')->parameters(['users' => 'request']);
-Route::put('/users/{id}',[UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::resource('/categories', CategoryController::class)->names('categories')->parameters(['categories' => 'request'])->middleware('auth');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update')->middleware('auth');
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy')->middleware('auth');
+
+Route::resource('/products', ProductController::class)->names('products')->parameters(['products' => 'request'])->middleware('auth');
+Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('auth');
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('auth');
+
+Route::resource('/users', UserController::class)->names('users')->parameters(['users' => 'request'])->middleware('auth');
+Route::put('/users/{id}',[UserController::class, 'update'])->name('users.update')->middleware('auth');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');

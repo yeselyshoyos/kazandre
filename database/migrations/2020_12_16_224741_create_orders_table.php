@@ -17,8 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('shipment');
             $table->foreignId('id_user')->constrained('users');
-            $table->foreignId('id_payment')->constrained('payments');
-            $table->foreignId('id_state')->constrained('states');
             $table->timestamps();
         });
     }

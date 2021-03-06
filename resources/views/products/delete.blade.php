@@ -11,7 +11,7 @@
                 <form action="{{ route('products.destroy', $row->id) }}" method="post">
                     @csrf
                     @method('delete')
-                    <h6>Seguro que desea elimiar la categoria <strong>{{ $row->name }}</strong></h6>
+                    <h6>Seguro que desea eliminar la categoria <strong>{{ $row->name }}</strong></h6>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-danger">Borrar</button>

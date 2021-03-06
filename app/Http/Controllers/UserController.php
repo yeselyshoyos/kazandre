@@ -23,7 +23,7 @@ class UserController extends Controller
                 ->select('users.*', 'doctypes.name AS doctypesName')
                 ->get();
 
-        return view('admin.index', compact('doctype', 'rows'));
+        return view('user.index', compact('doctype', 'rows'));
     }
 
     /**
@@ -64,11 +64,11 @@ class UserController extends Controller
         $users->docnumber       = $request->docnumber;
         $users->birthday        = $request->birthday;
         $users->telephone       = $request->telephone;
-        $users->role = '2';
+        $users->role            = '2';
 
         $users->save();
 
-        return redirect()->route('admin.index')->with('mensaje', '¡Usuario creado con exito!');
+        return redirect()->route('user.index')->with('mensaje', '¡Usuario creado con exito!');
     }
 
     /**
@@ -124,7 +124,7 @@ class UserController extends Controller
                     'telephone'         => $request->telephone,
                 ]);
 
-        return redirect()->route('admin.index')->with('mensaje', '¡Usuario creado con exito!');
+        return redirect()->route('user.index')->with('mensaje', '¡Usuario creado con exito!');
     }
 
     /**
@@ -138,6 +138,6 @@ class UserController extends Controller
         $rows = User::find($id);
         $rows->delete();
 
-        return redirect()->route('admin.index')->with('mensaje', '¡Usuario eliminado con exito!');
+        return redirect()->route('user.index')->with('mensaje', '¡Usuario eliminado con exito!');
     }
 }

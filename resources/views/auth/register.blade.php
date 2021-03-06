@@ -33,20 +33,6 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Tipo de Documento</label> <sup class="text-danger h6"><strong>*</strong></sup>
-                            <select name="doctypessss_id" id="" class="form-control @error('doctypessss_id') is-invalid @enderror">
-                                <option value=""></option>
-                                @foreach ($typeDocument as $row)
-                                    <option value="{{$row->id}}">{{ $row->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('doctypessss_id')
-                            <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                             <label for="">Numero de Documento</label> <sup class="text-danger h6"><strong>*</strong></sup>
                             <input type="number" class="form-control @error('docnumber') is-invalid @enderror" name="docnumber" value="{{ old('docnumber') }}" required autofocus>
 

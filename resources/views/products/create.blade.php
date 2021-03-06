@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col-6">
                             <label for="">Cantidad</label>
                             <input type="number" class="form-control" name="stock" required>
                             @error('stock')

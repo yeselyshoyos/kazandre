@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg shadow-sm" style="background-color: black; color: white;">
         <div class="container">
             <img src="{{ asset('img/logooficial.png') }}" width="50" height="50">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ route('login') }}">
                 Kazandré Boutique
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -42,21 +42,6 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}" style="color: white">
-                                <button class="btn btn-light">Iniciar sesión</button>
-                                </a>
-                            </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">
-                                    <button class="btn btn-outline-warning">Registrarse</button>
-                                </a>
-                            </li>
-                        @endif
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
