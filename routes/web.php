@@ -26,10 +26,9 @@ Route::get('/', function () {
 
 //Route::get('/', [InicioController::class, 'index']);
 
-Auth::routes();
+Auth::routes(['register' =>false]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
-
 
 
 Route::resource('/categories', CategoryController::class)->names('categories')->parameters(['categories' => 'request'])->middleware('auth');

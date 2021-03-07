@@ -12,8 +12,8 @@
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <label for="">Nombres</label>
-                            <input type="text" class="form-control" placeholder="Nombres" name="name">
+                            <label for="">Nombres</label> <sup class="text-danger h6"><strong>*</strong></sup>
+                            <input type="text" class="form-control" placeholder="Nombres" name="name" value="{{ old('name') }}">
                             @error('name')
                             <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -21,8 +21,8 @@
                             @enderror
                         </div>
                         <div class="col">
-                            <label for="">Apellidos</label>
-                            <input type="text" class="form-control" placeholder="Apellidos" name="lastname">
+                            <label for="">Apellidos</label> <sup class="text-danger h6"><strong>*</strong></sup>
+                            <input type="text" class="form-control" placeholder="Apellidos" name="lastname" value="{{ old('lastname') }}">
                             @error('lastname')
                             <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <label for="">Tipo de Documento</label>
+                            <label for="">Tipo de Documento</label> <sup class="text-danger h6"><strong>*</strong></sup>
                             <select name="doctypessss_id" id="" class="form-control">
                                 <option value=""></option>
                                 @foreach ($doctype as $item)
@@ -47,8 +47,8 @@
                             @enderror
                         </div>
                         <div class="col">
-                            <label for="">Numero de Documento</label>
-                            <input type="number" class="form-control" placeholder="Numero de Documento" name="docnumber">
+                            <label for="">Numero de Documento</label> <sup class="text-danger h6"><strong>*</strong></sup>
+                            <input type="number" class="form-control" placeholder="Numero de Documento" name="docnumber" value="{{ old('docnumber') }}">
                             @error('docnumber')
                             <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -58,8 +58,8 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" name="birthday">
+                            <label for="">Fecha de Nacimiento</label> <sup class="text-danger h6"><strong>*</strong></sup>
+                            <input type="date" class="form-control" name="birthday" value="{{ old('birthday') }}">
                             @error('birthday')
                             <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -67,8 +67,8 @@
                             @enderror
                         </div>
                         <div class="col">
-                            <label for="">Celular</label>
-                            <input type="number" class="form-control" placeholder="Numero de Celular" name="telephone">
+                            <label for="">Celular</label> <sup class="text-danger h6"><strong>*</strong></sup>
+                            <input type="number" class="form-control" placeholder="Numero de Celular" name="telephone" value="{{ old('telephone') }}">
                             @error('telephone')
                             <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -91,9 +91,8 @@
                     <div class="row">
                         <div class="col">
                             <label for="password">Contraseña</label>
-
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                            <input id="password" type="password" class="form-control password1 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <span class="fa fa-fw fa-eye password-icon show-password"></span>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -103,8 +102,7 @@
 
                         <div class="col">
                             <label for="password-confirm">Confirmar Contraseña</label>
-
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <input id="password-confirm" type="password" class="form-control password2" name="password_confirmation" required autocomplete="new-password">
                         </div>
                     </div>
                 </div>

@@ -15,9 +15,18 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .password-icon {
+            float: right;
+            position: relative;
+            margin: -25px 10px 0 0;
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 <body style="background-image: url({{ url('/img/fondo.png') }} ); background-color: white;">
@@ -70,5 +79,6 @@
         @yield('content')
     </main>
 </div>
+@include('auth.passwords.script')
 </body>
 </html>

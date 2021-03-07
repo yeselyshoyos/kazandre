@@ -24,6 +24,8 @@
 <!-- Ionic icons -->
 <link href="{{ asset('awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
+<!-- Script ver password -->
+ @include('auth.passwords.script')
 <!-- Sweet Alert -->
 @yield('js')
 

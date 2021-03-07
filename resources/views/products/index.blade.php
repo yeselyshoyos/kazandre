@@ -26,21 +26,22 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                <?php $num = 0;?>
                 @foreach ($rows as $row)
+                    <?php $num++; ?>
                     <tr>
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->name }}</td>
                         <td>${{ number_format($row->price) }}</td>
                         <td>{{ $row->stock }}</td>
                         <td>
-                            <button type="button" class="btn btn-info btn-circle" data-toggle="modal"  data-target="#ver">
+                            <button type="button" class="btn btn-info btn-circle" data-toggle="modal"  data-target="#ver<?=$num?>">
                                 <i class="fa fa-eye"></i>
                             </button>
-                            <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#editar">
+                            <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#editar<?=$num?>">
                                 <i class="fa fa-edit"></i>
                             </button>
-                            <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#eliminar">
+                            <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#eliminar<?=$num?>">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>

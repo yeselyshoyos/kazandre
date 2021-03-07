@@ -1,7 +1,7 @@
 
 <li class="nav-item dropdown no-arrow">
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="mr-2  d-lg-inline text-600 small text-uppercase" style="color: white">Alejandra</span>
+        <span class="mr-2  d-lg-inline text-600 small text-uppercase" style="color: white">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</span>
         <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
     </a>
 

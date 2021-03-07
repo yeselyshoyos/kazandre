@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\Doctype;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -55,20 +57,20 @@ class UserController extends Controller
             'telephone'         => 'required',
         ]);
 
-        $users                  = new User();
-        $users->name            = $request->name;
-        $users->email           = $request->email;
-        $users->password        = Hash::make($request['password']);
-        $users->lastname        = $request->lastname;
-        $users->doctypessss_id  = $request->doctypessss_id;
-        $users->docnumber       = $request->docnumber;
-        $users->birthday        = $request->birthday;
-        $users->telephone       = $request->telephone;
-        $users->role            = '2';
-
-        $users->save();
-
-        return redirect()->route('user.index')->with('mensaje', '¡Usuario creado con exito!');
+        $user = User::create([
+            'name'              => $request['name'],
+            'lastname'          => $request['lastname'],
+            'doctypessss_id'    => $request['doctypessss_id'],
+            'docnumber'         => $request['docnumber'],
+            'birthday'          => $request['birthday'],
+            'phone'             => $request['phone'],
+            'username'          => $request['username'],
+            'email'             => $request['email'],
+            'password'          => Hash::make($request['password']),
+            'role'              => 2,
+        ]);
+        Mail::to($user->email)->send(new WelcomeMail($user));
+        return $user->with('mensaje', '¡Usuario creado con exito!');
     }
 
     /**

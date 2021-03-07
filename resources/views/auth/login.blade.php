@@ -31,8 +31,8 @@
                             <div class="col">
                                 <label for="password">{{ __('Password') }}</label>
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                <input id="password" type="password" class="form-control password1 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <span class="fa fa-fw fa-eye password-icon show-password"></span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,9 +45,6 @@
                             <div class="col-md-6  offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                </div>
-
-                                <div class="col-md-8 offset-md">
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
