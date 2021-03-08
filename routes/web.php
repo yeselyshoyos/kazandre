@@ -32,13 +32,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middlewa
 
 
 Route::resource('/categories', CategoryController::class)->names('categories')->parameters(['categories' => 'request'])->middleware('auth');
-Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update')->middleware('auth');
-Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy')->middleware('auth');
 
 Route::resource('/products', ProductController::class)->names('products')->parameters(['products' => 'request'])->middleware('auth');
-Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('auth');
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('auth');
 
 Route::resource('/users', UserController::class)->names('users')->parameters(['users' => 'request'])->middleware('auth');
-Route::put('/users/{id}',[UserController::class, 'update'])->name('users.update')->middleware('auth');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');

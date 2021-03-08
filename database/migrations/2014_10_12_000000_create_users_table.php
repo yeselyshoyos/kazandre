@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('lastname');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->foreignId('doctypessss_id')->constrained('doctypes');
             $table->string('docnumber')->unique();
             $table->date('birthday');

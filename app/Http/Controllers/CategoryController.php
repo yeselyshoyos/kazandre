@@ -86,11 +86,13 @@ class CategoryController extends Controller
             'description' => 'required'
         ]);
 
-        $row = DB::table('categories')
-            ->where('id', $request->id)
-            ->update(['name' => $request->name, 'description' => $request->description]);
+        $categories                          = Category::find($id);
+        $categories->name                    = $request->name;
+        $categories->description                   = $request->description;
 
-        return redirect()->route('categories.index')->with('mensaje', '¡Categoria editada correctamente!');
+        $categories->save();
+
+        return back()->with('mensaje', '¡Categoria editada correctamente!');
 
     }
 

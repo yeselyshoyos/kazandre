@@ -9,7 +9,7 @@
             </span>
         <span class="text">Nuevo Usuario</span>
     </button>
-    @include('user.create')
+    @include('users.create')
 </div>
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -42,8 +42,8 @@
                             </button>
                         </td>
                     </tr>
-                    @include('user.edit')
-                    @include('user.delete')
+                    @include('users.edit')
+                    @include('users.delete')
                 @endforeach
                 </tbody>
             </table>

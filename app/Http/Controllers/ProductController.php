@@ -146,6 +146,7 @@ class ProductController extends Controller
                     'img'           => $img,
 
                 ]);
+        return back()->with('mensaje', '¡Producto editado con exito!');
     }
 
     /**
@@ -163,6 +164,6 @@ class ProductController extends Controller
         Storage::delete($url);
         $product->delete();
 
-        return redirect()->route('products.index')->with('mensaje', '¡Producto eliminado con exito!');
+        return back()->with('mensaje', '¡Producto eliminado con exito!');
     }
 }

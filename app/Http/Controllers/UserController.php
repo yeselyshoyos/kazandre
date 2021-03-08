@@ -25,7 +25,7 @@ class UserController extends Controller
                 ->select('users.*', 'doctypes.name AS doctypesName')
                 ->get();
 
-        return view('user.index', compact('doctype', 'rows'));
+        return view('users.index', compact('doctype', 'rows'));
     }
 
     /**
@@ -58,19 +58,19 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
-            'name'              => $request['name'],
-            'lastname'          => $request['lastname'],
-            'doctypessss_id'    => $request['doctypessss_id'],
-            'docnumber'         => $request['docnumber'],
-            'birthday'          => $request['birthday'],
-            'phone'             => $request['phone'],
-            'username'          => $request['username'],
-            'email'             => $request['email'],
-            'password'          => Hash::make($request['password']),
-            'role'              => 2,
+            'name'                      => $request['name'],
+            'lastname'                  => $request['lastname'],
+            'doctypessss_id'            => $request['doctypessss_id'],
+            'docnumber'                 => $request['docnumber'],
+            'birthday'                  => $request['birthday'],
+            'telephone'                 => $request['telephone'],
+            'username'                  => $request['username'],
+            'email'                     => $request['email'],
+            'password'                  => Hash::make($request['password']),
+            'role'                      => 2,
         ]);
         Mail::to($user->email)->send(new WelcomeMail($user));
-        return $user->with('mensaje', '¡Usuario creado con exito!');
+        return back()->with('mensaje', '¡Usuario creado con exito!');
     }
 
     /**
@@ -106,7 +106,6 @@ class UserController extends Controller
     {
         $request->validate([
             'name'              => ['required', 'string', 'max:255'],
-            'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'lastname'          => 'required',
             'doctypessss_id'    => 'required',
             'docnumber'         => 'required',
@@ -114,19 +113,17 @@ class UserController extends Controller
             'telephone'         => 'required',
         ]);
 
-        $rows = DB::table('users')
-                ->where('id', $request->id)
-                ->update([
-                    'name'              => $request->name,
-                    'email'             => $request->email,
-                    'lastname'          => $request->lastname,
-                    'doctypessss_id'    => $request->doctypessss_id,
-                    'docnumber'         => $request->docnumber,
-                    'birthday'          => $request->birthday,
-                    'telephone'         => $request->telephone,
-                ]);
+        $users                          = User::find($id);
+        $users->name                    = $request->name;
+        $users->email                   = $request->email;
+        $users->doctypessss_id          = $request->doctypessss_id;
+        $users->docnumber               = $request->docnumber;
+        $users->birthday                = $request->birthday;
+        $users->telephone               = $request->telephone;
 
-        return redirect()->route('user.index')->with('mensaje', '¡Usuario creado con exito!');
+        $users->save();
+
+        return back()->with('mensaje', '¡Usuario creado con exito!');
     }
 
     /**
@@ -140,6 +137,6 @@ class UserController extends Controller
         $rows = User::find($id);
         $rows->delete();
 
-        return redirect()->route('user.index')->with('mensaje', '¡Usuario eliminado con exito!');
+        return back()->with('mensaje', '¡Usuario eliminado con exito!');
     }
 }

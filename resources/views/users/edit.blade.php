@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label for="email">Correo Electrónico</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $row->email }}" required autocomplete="email">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $row->email }}" autocomplete="email">
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
